@@ -2,8 +2,10 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
+import os
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 socket = SocketIO(app)
 csrf = CSRFProtect(app)
 load_dotenv('.env')
@@ -11,7 +13,7 @@ load_dotenv('.env')
 
 @app.route('/')
 def index():
-    pass
+    return render_template('index.html')
 
 @app.route('/chat')
 def chat():
