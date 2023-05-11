@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_socketio import SocketIO, emit, send, join_room, leave_room
 from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
@@ -20,10 +20,23 @@ def index():
         chatroom = request.form.get('chatroom')
         image = request.form.get('photo')
         email = request.form.get('email')
-        user = User(username=username, email=email, chatroom=Generator.generate_chatroom_id(chatroom), image=f'/static/images/{image}')
+        chatroom_id=chatroom=Generator.generate_chatroom_id(chatroom).lower()
+        user = User(username=username, email=email, chatroom=chatroom_id, image=f'/static/images/{image}')
         user.save()
-
+        return redirect(url_for('chatroom', chatroom_id=chatroom_id))
     return render_template('index.html')
+
+
+
+# @socket.on('disconnect')
+# def disconnect(data):
+#     ''' Save chat history '''
+
+
+@app.route('/chatroom/<chatroom_id>')
+def chatroom(chatroom_id):
+    data = User.objects(chatroom=chatroom_id)
+    return render_template('chatroom.html', data=data)
 
 @app.route('/chat')
 def chat():
@@ -37,9 +50,6 @@ def chat():
 # def get_data(data):
 #     print(f"chatroom data: {data}")
 
-# @app.route('/chatroom')
-# def chatroom():
-#     return render_template('chatroom.html')
 
 @app.route('/invitation')
 def invitation():
