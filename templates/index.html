@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="login">
+ <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="text" name="chatroom" placeholder="Chatroom ID">
+    <input type="text" name="username" placeholder="Username">
+    <label><input type="file" name="user-image">Upload Photo</label>
+    <input type="submit" value="Sign in">
+ </form>
+</div>
+{% endblock %}
