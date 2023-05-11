@@ -1,7 +1,9 @@
 import redis
 import datetime
 import uuid
+import smtplib
 from datetime import datetime
+from twilio.rest import Client
 from mongoengine import *
 
 connect('history')
