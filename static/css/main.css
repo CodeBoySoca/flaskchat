@@ -28,7 +28,7 @@ html {
 .login {
     margin: 8% auto 0 auto;
     width: 30%;
-    height: 650px;
+    height: 750px;
     background: #272048;
     padding: 2%;
     border-radius: 50px;
@@ -69,11 +69,13 @@ html {
     color: #695E9A;
     font: normal 400 1em "droid-sans", sans-serif;
     color: #695E9A;
+    text-transform: uppercase;
 }
 
 .login form input::placeholder {
     padding-left: 3px;
     font: normal 400 1em "droid-sans", sans-serif;
+    text-transform: uppercase;
 }
 
 

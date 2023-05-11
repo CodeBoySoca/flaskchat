@@ -20,11 +20,12 @@
       
  <h1>Flaskchat</h1>
  <form method="post">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <input type="text" name="chatroom" placeholder="Chatroom ID">
-    <input type="text" name="username" placeholder="Username">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="csrf_token">
+    <input type="text" name="chatroom" placeholder="Chatroom ID" id="chatroom" required>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <input type="email" name="email" placeholder="E-mail" id="email" required>
     <label>
-        <input type="file" name="user-image" hidden>
+        <input type="file" name="photo" id="photo" hidden>
         <div>
             <span>Upload Photo</span>
         </div>
@@ -32,4 +33,5 @@
     <input type="submit" value="Sign in">
  </form>
 </div>
+
 {% endblock %}

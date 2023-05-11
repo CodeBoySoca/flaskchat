@@ -4,13 +4,14 @@
         <title>Flask Chat</title>
         <link rel="stylesheet" href="https://use.typekit.net/bsk3okz.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="{{ url_for('static', filename='js/main.js')}}"></script>
     </head>
     <body>
        <div id="container"> 
         {% block content %}
         {% endblock %}
        </div> 
+       <script src="{{ url_for('static', filename='js/main.js')}}"></script>
     </body>
 </html>
