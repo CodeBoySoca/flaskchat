@@ -1,8 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="chatroom">
- {% for item in data %}
-   <h1>{{ item.username }}</h1>
- {% endfor %}
+
+ {% include 'chat-header.html' %}
+
+
+
+ <div class="chat-container">
+    {% for item in data %}
+    <div class="user-header">
+        <section>  
+        <img src="../static/uploads/{{ item.image }}" alt="user image">
+        <h3>{{ item.username }}<h3>
+        </section>    
+     </div>
+     
+    <div class="chat-messages">
+
+    </div>  
+    {% endfor %}
+ </div>
+ 
+
+
+<div class="message-container">
+
+    <div class="message-list-options-container">
+        <div class="message-list-options">
+            <div class="message-list-item">👋</div> 
+            <div class="message-list-item">🫰🏾</div> 
+            <div class="message-list-item">👍</div> 
+            <div class="message-list-item">🫶🏿 </div> 
+            <div class="message-list-item">😀</div> 
+            <div class="message-list-item">😎</div> 
+            <div class="message-list-item">🙁</div> 
+            <div class="message-list-item">🥳</div> 
+            <div class="message-list-item">😂</div> 
+            <div class="message-list-item">😊</div> 
+            <div class="message-list-item">😋</div> 
+            <div class="message-list-item text">Hey</div> 
+            <div class="message-list-item text">Goodbye</div> 
+            <div class="message-list-item text">Cool</div> 
+        </div>  
+    </div> 
+    <div class="message-content">  
+     <div>hide</div>   
+     <textarea name="message" placeholder="Hello everyone..." required></textarea>
+    </div> 
 </div>
+
 {% endblock %}

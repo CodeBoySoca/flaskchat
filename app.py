@@ -8,6 +8,7 @@ from models import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['UPLOAD_FOLDER'] = os.getenv('UPLOAD_FOLDER')
 socket = SocketIO(app)
 csrf = CSRFProtect(app)
 load_dotenv('.env')
@@ -18,10 +19,12 @@ def index():
     if request.method == 'POST':
         username = request.form.get('username')
         chatroom = request.form.get('chatroom')
-        image = request.form.get('photo')
+        image = request.files['photo']
         email = request.form.get('email')
         chatroom_id=chatroom=Generator.generate_chatroom_id(chatroom).lower()
-        user = User(username=username, email=email, chatroom=chatroom_id, image=f'/static/images/{image}')
+        path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
+        image.save(path)
+        user = User(username=username, email=email, chatroom=chatroom_id, image=image.filename)
         user.save()
         return redirect(url_for('chatroom', chatroom_id=chatroom_id))
     return render_template('index.html')
