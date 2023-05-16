@@ -2,5 +2,20 @@
   <h1>Flaskchat</h1>
   <nav>
      <img src="{{ url_for('static', filename='images/hamburger.svg')}}" id="menu-button">
-    </nav>      
+   </nav>  
+   <div class="close" id="close">[X]CLOSE</div>
+   <div class="menu" id="menu">
+      <div id="invite"><a href="#">INVITE A FRIEND</a></div>
+      <div id="logout"><a href="/logout">LOGOUT</a></div>
+   </div> 
+
+   <div class="modal" id="invite-modal">
+    <img src="{{ url_for('static', filename='images/envelope.svg')}}" alt="envelope icon">
+    <h3>INVITE USERS</h3>
+    <p>Enter your buddies e-mail or telephone number</p>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="button" value="SEND INVITE">
+ </div> 
+
+
 </div>
