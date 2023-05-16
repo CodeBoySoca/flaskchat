@@ -39,7 +39,11 @@ def index():
 @app.route('/chatroom/<chatroom_id>')
 def chatroom(chatroom_id):
     data = User.objects(chatroom=chatroom_id)
-    return render_template('chatroom.html', data=data)
+    try: 
+       return render_template('chatroom.html')
+    except AttributeError: 
+        return render_template('chatroom.html', data=data)
+
 
 @app.route('/chat')
 def chat():

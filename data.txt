@@ -1,0 +1,118 @@
+
+var socket = io({autoConnect: false});
+document.getElementById('submit-btn').addEventListener('click', (e) => {
+    let username = document.getElementById('username').value
+    let chatroom = document.getElementById('chatroom').value
+    let photo = document.getElementById('photo').value
+    let form = document.getElementById('loginForm')
+     
+    let data = {
+        'username' : username,
+        'chatroom' : chatroom,
+        'photo' : photo
+    }
+
+    socket.connect()
+
+    socket.on('connect', () => {
+        socket.emit('user_join', data)
+    })
+
+})
+
+
+users =  [
+    {
+  "_id": "645c69cc3cc6cf1173f8beea",
+  "username" : "joe-5254727we46",
+  "image" : "Group 6.png",
+  "chat": [
+    {
+      "chatroom_id": "chat-688574e56",
+      "creation_date": datetime.datetime.utcnow(),
+      "messages": [
+        {
+          "sender": "joe-5254727we46",
+          "image" : "Group 6.png",
+          "message": "Top notch morning everyone, top notch",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "georgie-52546",
+          "image" : "Group 6.png",
+          "message": "This idiot thinks talking like that is funny 🤣",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "joan-2188e46",
+          "image" : "Group 6.png",
+          "message": "This idiot thinks talking like that is funny 🤣",
+          "message_date": datetime.datetime.utcnow()
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": "645c69ghghfrt173f8beea",
+  "username" : "amy-5254727we46",
+  "image" : "Rectangle 22.png",
+  "chat": [
+    {
+      "chatroom_id": "chat-34563683466",
+      "creation_date": datetime.datetime.utcnow(),
+      "messages": [
+        {
+          "sender": "tommygun-424334900",
+          "message": "Hey Ams :)",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "amy-5254727we46",
+          "message": "Hey Tommy, how are you?",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "tommygun-424334900",
+          "message": "Good!",
+          "message_date": datetime.datetime.utcnow()
+        }
+      ]
+    }
+  ]
+},
+
+{
+  "_id": "645c69ghghfrt173f8beea",
+  "username" : "bonnie-5254727we46",
+  "image" : "Rectangle 26.png",
+  "chat": [
+    {
+      "chatroom_id": "chat-34563683466",
+      "creation_date": datetime.datetime.utcnow(),
+      "messages": [
+        {
+          "sender": "bonnie-5254727we46",
+          "message": "OK, I want to talk about cats...",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "tim-567734673452",
+          "message": "Wait, what?",
+          "message_date": datetime.datetime.utcnow()
+        },
+        {
+          "sender": "Daphne-67846463",
+          "message": "Oh no",
+          "message_date": datetime.datetime.utcnow()
+        }
+
+      ]
+    }
+  ]
+}
+
+
+]
+
+

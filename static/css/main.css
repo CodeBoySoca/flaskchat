@@ -312,13 +312,45 @@ html {
     position: absolute;
     top: 75px;
     right: 85px;
-    font: 400 3.4em Andale Mono, sans-serif;
+    font: 400 3.4em Andale Mono, monospace;
     color: #fff;
     cursor: pointer;
     z-index: 9 !important;
 }
 
+#bot-message {
+    width: 50%;
+    margin: 7% auto 0 auto;
+}
 
+#bot-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+#bot-container p {
+    background: #C7BDF2;
+    color: #1B1439;
+    text-transform: uppercase;
+    font: 900 0.9em Andale Mono, monospace;
+    line-height: 2.4em;
+    border-radius: 15px;
+    padding: 2%;
+    height: 100px;
+}
+
+#bot-container img {
+    margin-right: 50px !important;
+}
+
+#bot-container p img {
+    margin-right: 0px !important;
+    width: 28px;
+    height: 28px;
+}
+
+#bot-container img {}
 
 @media(max-width: 1440px) {
     .login {
