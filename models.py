@@ -5,7 +5,7 @@ import string
 import secrets
 import os
 from dotenv import load_dotenv
-from datetime import datetime
+import datetime
 from twilio.rest import Client
 from mongoengine import *
 from email.message import EmailMessage
@@ -13,18 +13,23 @@ from email.message import EmailMessage
 load_dotenv('.env')
 connect('flaskchat')
 
-class Chat(Document):
-    pass
+class Messages(EmbeddedDocument):
+    sender = StringField(required=True)
+    message = StringField()
+    message_date = DateTimeField(default=datetime.datetime.utcnow)
+
+class Chat(EmbeddedDocument):
+    chatroom_id = StringField(required=True)
+    creation_date = DateTimeField(default=datetime.datetime.utcnow)
+    message = ListField(EmbeddedDocumentField(Messages))
 
 class User(Document):
-    username = StringField(required=True)
-    email = EmailField(required=True)
-    chatroom = StringField(required=True)
+    username = StringField(required=True, unique=True)
+    chat = ListField(EmbeddedDocumentField(Chat))
+    creation_date = DateTimeField(default=datetime.datetime.utcnow)
     image = StringField()
     role = StringField()
 
-class Messages():
-    pass
 
 class Generator:
     def generate_chatroom_id(chatroom_id):

@@ -8,7 +8,7 @@
         <div class="user-header">
             <section>  
             <img src="../static/uploads/{{ item.image }}" alt="user image">
-            <h3>{{ item.username }}<h3>
+            <h3>{{ username }}<h3>
             </section>    
         </div>
         
@@ -17,6 +17,9 @@
         </div>  
         {% endfor %}
     </div>
+
+
+
  
 {% else %}
 <div id="bot-message">
@@ -31,6 +34,9 @@
    </div>
 </div>
 {% endif %}
+
+
+
 
 <div class="message-container">
 
@@ -55,7 +61,7 @@
     </div> 
     <div class="message-content">  
      <div id="hide">hide</div>   
-     <textarea name="message" placeholder="Hello everyone..." required></textarea>
+     <textarea name="message" id="chatbox" placeholder="Hello everyone..." required></textarea>
     </div> 
 </div>
 
