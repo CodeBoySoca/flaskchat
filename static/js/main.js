@@ -24,7 +24,6 @@ document.getElementById('menu-button').addEventListener('click', (e) => {
     document.getElementById('menu').style.display='block'
     document.getElementById('close').style.display='block'
     overlay.appendChild(modal)
-    //document.getElementById('invite-modal').style.display='block'
     
     anime({
         targets: ['.menu'],
@@ -37,14 +36,6 @@ document.getElementById('menu-button').addEventListener('click', (e) => {
         translateX: 0,
         easing: 'easeInOutExpo'
     })
-
-
-    // anime({
-    //     targets: ['#invite-modal'],
-    //     translateY: 0,
-    //     easing: 'easeInOutExpo'
-    // })
-
 
     document.getElementById('close').addEventListener('click', () => {
         anime({
@@ -61,12 +52,8 @@ document.getElementById('menu-button').addEventListener('click', (e) => {
    
 })
 
-
 document.getElementById('invite').addEventListener('click', () => {
-
-    let modal = document.getElementById('invite-modal').style.display='block'
- 
-
+    document.getElementById('invite-modal').style.display='block'
     anime({
         targets : '.menu',
         translateX : -2900,
@@ -79,7 +66,30 @@ document.getElementById('invite').addEventListener('click', () => {
         easing: 'easeInOutExpo'
     })
 
+
 })
 
+document.getElementById('send_number').addEventListener('click', () => {
+    var mobile = document.getElementById('mobile').value
+    console.log(mobile)
+    send_invite(mobile)
+    anime({
+        targets: ['#invite-modal', '.overlay', '.close'],
+        translateY: -775,
+        easing: 'easeInOutExpo'
+    })
 
+})
 
+function send_invite(mobile){
+    let chatname = location.pathname.split('/').pop()
+    var url = `http://localhost:5000/invite/${chatname}`
+    data = {
+        mobile_number: mobile
+    }
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', url)
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.setRequestHeader('Content-type', 'application/json')
+    xhr.send(JSON.stringify(data)) 
+}
