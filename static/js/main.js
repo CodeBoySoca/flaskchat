@@ -71,13 +71,13 @@ document.getElementById('invite').addEventListener('click', () => {
 
 document.getElementById('send_number').addEventListener('click', () => {
     var mobile = document.getElementById('mobile').value
-    console.log(mobile)
     send_invite(mobile)
     anime({
         targets: ['#invite-modal', '.overlay', '.close'],
-        translateY: -775,
+        translateY: -1275,
         easing: 'easeInOutExpo'
     })
+    document.getElementById('mobile').value=''
 
 })
 
